@@ -3,7 +3,8 @@ import streamlit as st
 import openai
 
 # Coloque sua chave da OpenAI aqui
-openai.api_key = "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"
+import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.title("Agente de Organização Pessoal 🚀")
 st.write("Insira suas tarefas, hábitos e compromissos e receba um plano diário/semanal personalizado.")
