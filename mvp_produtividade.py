@@ -31,27 +31,26 @@ if st.button("Gerar plano"):
     if not tarefas or not objetivos:
         st.warning("Por favor, preencha objetivos e tarefas antes de gerar o plano.")
     else:
-        prompt = f"""
-        Você é um assistente de produtividade.
-        Usuário: {nome}
-        Objetivos: {objetivos}
-        Tarefas/Hábitos: {tarefas}
-        Gere um plano diário/semanal detalhado, incluindo horários sugeridos e dicas rápidas de produtividade.
-        """
-
         try:
-            # Nova API compatível com openai>=1.0.0, usando GPT-3.5
-            response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "Você é um assistente de produtividade muito organizado."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.7,
-                max_tokens=500
-            )
+            # Simulação de resposta enquanto a OpenAI não está disponível
+            plano = f"""
+Plano de Produtividade Simulado para {nome}:
 
-            plano = response.choices[0].message.content
+Objetivos: {objetivos}
+Tarefas/Hábitos: {tarefas}
+
+- 08:00 – 09:00: Início do dia e planejamento
+- 09:00 – 12:00: Trabalho/Estudo focado
+- 12:00 – 13:00: Pausa/Almoço
+- 13:00 – 16:00: Trabalho/Estudo focado
+- 16:00 – 16:30: Alongamento e descanso
+- 16:30 – 18:00: Revisão de tarefas e preparação para amanhã
+
+Dicas rápidas:
+- Priorize tarefas mais importantes primeiro
+- Use blocos de 90 minutos para foco máximo
+- Registre progresso e celebre pequenas vitórias
+"""
             st.subheader("Seu Plano Personalizado 📋")
             st.write(plano)
         except Exception as e:
